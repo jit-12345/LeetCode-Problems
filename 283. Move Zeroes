@@ -1,0 +1,46 @@
+question link:https://leetcode.com/problems/move-zeroes/
+
+**** Efficient Way To Solve It ****
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int z = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[z] = nums[i];
+                z++;
+            }
+        }
+
+        for (int i = nums.length - 1; i >= z; i--) {
+            nums[i] = 0;
+        }
+    }
+}
+
+
+
+****My BrootForce Approch Is ****
+
+class Solution {
+    public void moveZeroes(int[] nums) {
+       int count=0;
+       for(int i=0;i<nums.length;i++){
+           if(nums[i]==0){
+               ++count;
+           }
+       } 
+       for(int i=0;i<(nums.length-count);i++){
+           if(nums[i]==0){
+               for(int j=i+1;j<nums.length;j++){
+                   if(nums[j] !=0){
+                       int temp=nums[j];
+                       nums[j]=nums[i];
+                       nums[i]=temp;
+                       break;
+                   }
+               }
+           }
+       }
+    }
+}
+
